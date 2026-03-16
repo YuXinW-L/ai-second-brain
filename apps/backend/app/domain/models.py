@@ -38,7 +38,27 @@ class ChangeLog(SQLModel, table=True):
 
 
 def utc_now() -> datetime:
-    return datetime.now(timezone.utc)
+    # 使用本地时间，解决时区问题
+    return datetime.now()
+
+
+class ConversationSession(SQLModel, table=True):
+    __tablename__ = "conversation_sessions"
+
+    id: UUID = Field(default_factory=uuid4, primary_key=True, index=True)
+    title: str = Field(default="")
+    created_at: datetime = Field(index=True, default_factory=utc_now)
+    updated_at: datetime = Field(index=True, default_factory=utc_now)
+
+
+class ConversationHistory(SQLModel, table=True):
+    __tablename__ = "conversation_history"
+
+    id: UUID = Field(default_factory=uuid4, primary_key=True, index=True)
+    conversation_id: UUID = Field(index=True, foreign_key="conversation_sessions.id")
+    timestamp: datetime = Field(index=True, default_factory=utc_now)
+    role: str = Field(index=True)  # user | assistant
+    content: str
 
 
 def json_dumps(obj: Any) -> str:

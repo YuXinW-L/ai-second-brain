@@ -13,7 +13,13 @@ _collection: Collection | None = None
 def get_client() -> chromadb.Client:
     global _client
     if _client is None:
-        _client = chromadb.Client()
+        # 使用持久化客户端，确保数据持久化
+        import os
+        from pathlib import Path
+        # 创建数据目录
+        data_dir = Path(__file__).parent.parent.parent / "data" / "chroma"
+        data_dir.mkdir(parents=True, exist_ok=True)
+        _client = chromadb.PersistentClient(path=str(data_dir))
     return _client
 
 
