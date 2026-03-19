@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: system-ui, sans-serif;
+  background-color: #f8fafc;
+  color: #0f172a;
+}
+
+@layer components {
+  .btn {
+    @apply px-4 py-2 rounded-lg font-medium transition-colors;
+  }
+  
+  .btn-primary {
+    @apply bg-indigo-600 text-white hover:bg-indigo-700;
+  }
+  
+  .btn-secondary {
+    @apply bg-white border border-slate-200 text-slate-700 hover:bg-slate-50;
+  }
+  
+  .card {
+    @apply bg-white rounded-xl shadow-sm border border-slate-200 p-4;
+  }
+  
+  .input {
+    @apply w-full px-4 py-2 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-100 focus:border-indigo-600;
+  }
+  
+  .textarea {
+    @apply w-full px-4 py-2 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-100 focus:border-indigo-600 resize-none;
+  }
+  
+  .nav-item {
+    @apply flex items-center gap-3 px-3 py-2 rounded-lg transition-colors;
+  }
+  
+  .nav-item.active {
+    @apply bg-indigo-50 text-indigo-600 font-medium;
+  }
+  
+  .nav-item:not(.active) {
+    @apply text-slate-600 hover:bg-slate-100;
+  }
+}
