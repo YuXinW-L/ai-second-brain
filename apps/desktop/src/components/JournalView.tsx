@@ -192,7 +192,7 @@ const JournalView: React.FC<JournalViewProps> = ({
               <div key={entry.id} className="group relative bg-white p-4 rounded-xl shadow-sm border border-slate-200 cursor-pointer hover:shadow-md transition-all">
                 <div className="flex justify-between items-start mb-2">
                   <span className="text-[10px] font-bold text-slate-400 uppercase tracking-tighter">
-                    {new Date(entry.timestamp).toLocaleString(undefined, {
+                    {new Date(entry.timestamp + (entry.timestamp.includes('Z') ? '' : 'Z')).toLocaleString('zh-CN', {
                       year: "numeric",
                       month: "2-digit",
                       day: "2-digit",

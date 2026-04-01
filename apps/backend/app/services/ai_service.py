@@ -139,7 +139,7 @@ class AIService:
         """生成每周总结"""
         try:
             if end_date is None:
-                end_date = datetime.now()
+                end_date = datetime.now(timezone.utc)
             start_date = end_date - timedelta(days=7)
             
             log.info(f"Generating weekly reflection for period: {start_date} to {end_date}")

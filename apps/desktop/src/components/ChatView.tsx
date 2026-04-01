@@ -79,7 +79,7 @@ const ChatView: React.FC<ChatViewProps> = ({
                     {conversation.title || "无标题对话"}
                   </p>
                   <p className="text-xs text-slate-400 mt-1">
-                    {new Date(conversation.updated_at).toLocaleString()}
+                    {new Date(conversation.updated_at + (conversation.updated_at.includes('Z') ? '' : 'Z')).toLocaleString('zh-CN')}
                   </p>
                 </div>
               </div>

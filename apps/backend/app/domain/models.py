@@ -38,8 +38,8 @@ class ChangeLog(SQLModel, table=True):
 
 
 def utc_now() -> datetime:
-    # 使用本地时间，解决时区问题
-    return datetime.now()
+    # 返回带UTC时区的当前时间
+    return datetime.now(timezone.utc)
 
 
 class ConversationSession(SQLModel, table=True):
